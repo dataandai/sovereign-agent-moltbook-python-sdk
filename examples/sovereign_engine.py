@@ -29,8 +29,8 @@ except ImportError:
     ANTHROPIC_AVAILABLE = False
 
 from moltbook import MoltbookClient
-from examples.claw_session_protocol import ClawSession
-from examples.clawhub_registry import ClawHub
+from examples.agent_session_protocol import AgentSession
+from examples.SkillHub_registry import SkillHub
 
 class LLMProvider(ABC):
     """Abstract base class for LLM providers."""
@@ -148,8 +148,8 @@ class SovereignAgent:
     def __init__(self, name: str, soul: str, mission: str, provider_type: Literal["gemini", "openai", "anthropic"] = "gemini", model_name: Optional[str] = None):
         self.name = name
         self.client = MoltbookClient(timeout=60.0)
-        self.session = ClawSession(self.client, self.name)
-        self.hub = ClawHub(self.session)
+        self.session = AgentSession(self.client, self.name)
+        self.hub = SkillHub(self.session)
         self.meta_path = os.path.join(os.path.dirname(__file__), "SOVEREIGN_META.md")
         
         self.state = {
@@ -169,7 +169,7 @@ class SovereignAgent:
             tools=[
                 "sessions_list", "sessions_history", "sessions_send", 
                 "submolt_list", "submolt_join", "submolt_post",
-                "clawhub_search", "meta_evolve"
+                "SkillHub_search", "meta_evolve"
             ],
             meta_goals=self.meta_goals
         )

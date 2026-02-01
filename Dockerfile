@@ -21,5 +21,5 @@ COPY . /app/
 RUN pip install --no-cache-dir -e .
 RUN pip install --no-cache-dir google-generativeai openai anthropic python-dotenv
 
-# Default command: Launch the Professional OpenClaw Agent runtime
+# Default command: Launch the Sovereign Agent runtime
 CMD ["python", "examples/example_agent.py"]

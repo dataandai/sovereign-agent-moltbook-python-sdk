@@ -169,35 +169,35 @@ class SkillRegistry:
         return discovered
     
     # -------------------------------------------------------------------------
-    # OPENCLAW-NATIVE SKILL DISCOVERY (sessions_* protocol)
+    # Moltbook-NATIVE SKILL DISCOVERY (sessions_* protocol)
     # -------------------------------------------------------------------------
     
-    def query_agent_capabilities_openclaw(
+    def query_agent_capabilities_Moltbook(
         self, 
         agent_name: str,
         session_protocol: Any = None
     ) -> Optional[RegisteredAgent]:
         """
-        Query an OpenClaw agent directly for its capabilities using sessions_send.
+        Query an Moltbook agent directly for its capabilities using sessions_send.
         
-        This is the OpenClaw-native way to discover skills - by asking the agent directly
-        what tools it has available. This works with any OpenClaw-compatible agent.
+        This is the Moltbook-native way to discover skills - by asking the agent directly
+        what tools it has available. This works with any Moltbook-compatible agent.
         
         Args:
             agent_name: The name/identifier of the agent to query.
-            session_protocol: An instance of ClawSession for sending messages.
+            session_protocol: An instance of AgentSession for sending messages.
         
         Returns:
             RegisteredAgent with discovered skills, or None if query fails.
         
         Example:
-            from examples.claw_session_protocol import ClawSession
+            from examples.agent_session_protocol import AgentSession
             
-            session = ClawSession(client, "My_Agent")
+            session = AgentSession(client, "My_Agent")
             registry = SkillRegistry(client)
             
-            # Query an OpenClaw agent for its capabilities
-            agent = registry.query_agent_capabilities_openclaw(
+            # Query an Moltbook agent for its capabilities
+            agent = registry.query_agent_capabilities_Moltbook(
                 "Code_Agent_01", 
                 session_protocol=session
             )
@@ -206,10 +206,10 @@ class SkillRegistry:
                 print(f"Discovered skills: {[s.name for s in agent.skills]}")
         """
         if not session_protocol:
-            print("⚠️ No session protocol provided. Cannot query OpenClaw agent.")
+            print("⚠️ No session protocol provided. Cannot query Moltbook agent.")
             return None
         
-        # Standard OpenClaw capability request message
+        # Standard Moltbook capability request message
         capability_request = """[CAPABILITY_REQUEST]
 Please respond with your available tools and capabilities in the following JSON format:
 ```json
@@ -226,7 +226,7 @@ Please respond with your available tools and capabilities in the following JSON 
 ```"""
         
         try:
-            print(f"🔍 Querying OpenClaw agent: {agent_name}...")
+            print(f"🔍 Querying Moltbook agent: {agent_name}...")
             
             # Use sessions_send to ask the agent about its capabilities
             response = session_protocol.sessions_send(
@@ -236,7 +236,7 @@ Please respond with your available tools and capabilities in the following JSON 
             )
             
             # Parse the response
-            agent = self._parse_openclaw_capability_response(agent_name, response)
+            agent = self._parse_Moltbook_capability_response(agent_name, response)
             
             if agent:
                 self._known_agents[agent.name] = agent
@@ -248,15 +248,15 @@ Please respond with your available tools and capabilities in the following JSON 
             print(f"⚠️ Failed to query {agent_name}: {e}")
             return None
     
-    def _parse_openclaw_capability_response(
+    def _parse_Moltbook_capability_response(
         self, 
         agent_name: str, 
         response: str
     ) -> Optional[RegisteredAgent]:
         """
-        Parse the capability response from an OpenClaw agent.
+        Parse the capability response from an Moltbook agent.
         
-        OpenClaw agents typically respond with their tool list when asked.
+        Moltbook agents typically respond with their tool list when asked.
         This method extracts the structured capability data.
         """
         try:
@@ -342,18 +342,18 @@ Please respond with your available tools and capabilities in the following JSON 
         
         return None
     
-    def discover_all_openclaw_agents(
+    def discover_all_Moltbook_agents(
         self,
         session_protocol: Any = None
     ) -> List[RegisteredAgent]:
         """
-        Discover all online OpenClaw agents and query their capabilities.
+        Discover all online Moltbook agents and query their capabilities.
         
         Uses sessions_list to find active agents, then queries each one
         for their capabilities using sessions_send.
         
         Args:
-            session_protocol: An instance of ClawSession.
+            session_protocol: An instance of AgentSession.
         
         Returns:
             List of RegisteredAgents with their discovered skills.
@@ -366,7 +366,7 @@ Please respond with your available tools and capabilities in the following JSON 
         
         try:
             # Step 1: List all active agents using sessions_list
-            print("🔍 Scanning network for active OpenClaw agents...")
+            print("🔍 Scanning network for active Moltbook agents...")
             active_agents = session_protocol.sessions_list()
             
             if not active_agents:
@@ -377,18 +377,18 @@ Please respond with your available tools and capabilities in the following JSON 
             
             # Step 2: Query each agent for their capabilities
             for agent_name in active_agents:
-                agent = self.query_agent_capabilities_openclaw(
+                agent = self.query_agent_capabilities_Moltbook(
                     agent_name, 
                     session_protocol
                 )
                 if agent:
                     discovered.append(agent)
             
-            print(f"\n✅ OpenClaw discovery complete: {len(discovered)} agents catalogued")
+            print(f"\n✅ Moltbook discovery complete: {len(discovered)} agents catalogued")
             return discovered
             
         except Exception as e:
-            print(f"⚠️ OpenClaw discovery failed: {e}")
+            print(f"⚠️ Moltbook discovery failed: {e}")
             return []
 
     

@@ -1,6 +1,6 @@
 """
 PhiloticAgent - A specialized Moltbook agent that implements
-an Agent-to-Agent communication protocol inspired by OpenClaw.
+an Agent-to-Agent communication protocol inspired by Moltbook.
 """
 
 import json
@@ -53,14 +53,14 @@ class PhiloticAgent:
         return missions
 
     def get_agent_history(self, agent_name: str, limit: int = 10) -> List[Post]:
-        """OpenClaw sessions_history equivalent: fetch posts/activity of an agent."""
+        """Moltbook sessions_history equivalent: fetch posts/activity of an agent."""
         # Note: We use search to find an agent's posts if supported, 
         # or filter from global feed.
         all_posts = self.client.posts.list(limit=100)
         return [p for p in all_posts if p.author_name == agent_name][:limit]
 
     def list_active_agents(self) -> List[str]:
-        """OpenClaw sessions_list equivalent: discover agents participating in the mesh."""
+        """Moltbook sessions_list equivalent: discover agents participating in the mesh."""
         posts = self.client.posts.list(limit=50)
         agents = set()
         for p in posts:

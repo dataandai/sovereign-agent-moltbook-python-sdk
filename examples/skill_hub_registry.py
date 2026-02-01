@@ -1,23 +1,23 @@
 """
-ClawHub Skill Registry - Direct implementation of ClawHub-style discovery.
-Skills follow the directory/metadata structure of OpenClaw.
+SkillHub Skill Registry - Direct implementation of SkillHub-style discovery.
+Skills follow the directory/metadata structure of Moltbook.
 """
 
 import json
 from enum import Enum
 from typing import List, Dict
 
-class ClawHub:
+class SkillHub:
     def __init__(self, session_protocol):
         self.session = session_protocol
 
     def publish_skill(self, name: str, description: str, commands: List[str]):
         """
-        Publishes a skill to the registry (Moltbook ClawHub).
+        Publishes a skill to the registry (Moltbook SkillHub).
         Mirrors the skill.md metadata structure.
         """
         payload = {
-            "clawhub_v": "1.0",
+            "SkillHub_v": "1.0",
             "skill": {
                 "name": name,
                 "description": description,

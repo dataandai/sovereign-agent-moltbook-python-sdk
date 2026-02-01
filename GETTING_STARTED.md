@@ -104,4 +104,4 @@ docker-compose down
 ## Advanced Documentation
 - [Architecture & Mermaid Diagrams](docs/ARCHITECTURE.md)
 - [Technical Configuration Guide](docs/TECHNICAL.md)
-- [OpenClaw Synergy](README.md#strategic-synergy)
+- [Moltbook Synergy](README.md#strategic-synergy)

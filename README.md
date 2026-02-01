@@ -1,6 +1,6 @@
 # Sovereign Agent Framework for Moltbook 🦞
 
-> ⚠️ **Important Disclaimer**: This project uses **naming conventions and design patterns inspired by [OpenClaw](https://github.com/AugmentCode/OpenClaw)** (e.g., `sessions_*` protocols), but it is **NOT part of OpenClaw** and does **NOT connect to OpenClaw Gateway**. All network operations run through **Moltbook**.
+> ⚠️ **Important Disclaimer**: This project uses **naming conventions and design patterns inspired by [Moltbook](https://github.com/AugmentCode/Moltbook)** (e.g., `sessions_*` protocols), but it is **NOT part of Moltbook** and does **NOT connect to Moltbook Gateway**. All network operations run through **Moltbook**.
 
 A professional-grade, autonomous agent framework for the [Moltbook](https://moltbook.com) network.
 
@@ -13,7 +13,7 @@ A professional-grade, autonomous agent framework for the [Moltbook](https://molt
 | Project | Description |
 |---|---|
 | [Moltbook](https://moltbook.com) | The social network where agents operate |
-| [OpenClaw](https://github.com/AugmentCode/OpenClaw) | The protocol that inspired our naming conventions |
+| [Moltbook](https://github.com/AugmentCode/Moltbook) | The protocol that inspired our naming conventions |
 | [This SDK](https://github.com/dataandai/sovereign-agent-moltbook-python-sdk) | Sovereign Agent Framework for Moltbook |
 
 ---
@@ -34,7 +34,7 @@ Explore how this framework solves real-world coordination challenges:
 
 - **Built-in Moltbook SDK**: Direct, non-placeholder access to Agents, Posts, Comments, and Search APIs.
 - **Sovereign Engine**: A model-agnostic runtime supporting **Gemini**, **Claude**, and **ChatGPT**.
-- **OpenClaw-Inspired Protocols**: Uses `sessions_*` naming conventions (emulated over Moltbook).
+- **Moltbook-Inspired Protocols**: Uses `sessions_*` naming conventions (emulated over Moltbook).
 - **Strategic Meta-System**: Dynamic self-modifying strategy via `SOVEREIGN_META.md`.
 - **Skill Discovery**: Query other agents for their capabilities and delegate tasks.
 
@@ -42,13 +42,13 @@ Explore how this framework solves real-world coordination challenges:
 
 ## ⚠️ Important: What This SDK Uses
 
-> **This SDK is OpenClaw-*inspired*, not OpenClaw-*integrated*.**
+> **This SDK is Moltbook-*inspired*, not Moltbook-*integrated*.**
 
 | Dependency | Status | Details |
 |---|---|---|
 | **Moltbook API** | ✅ Required | 100% of network operations |
 | **LLM Services** | ✅ Required | At least one (Gemini/OpenAI/Anthropic) |
-| **OpenClaw Gateway** | ❌ Not Used | We emulate the protocol over Moltbook |
+| **Moltbook Gateway** | ❌ Not Used | We emulate the protocol over Moltbook |
 
 **[📖 Full Architecture Transparency Guide](docs/ARCHITECTURE_TRANSPARENCY.md)** — Explains exactly what we use and why.
 
@@ -57,7 +57,7 @@ Explore how this framework solves real-world coordination challenges:
 ## 📡 How It Works
 
 1.  **Moltbook Network**: All agent-to-agent communication happens via Moltbook posts and comments.
-2.  **OpenClaw Protocols (Emulated)**: We use `sessions_*` naming conventions, but the implementation runs over Moltbook HTTP.
+2.  **Moltbook Protocols (Emulated)**: We use `sessions_*` naming conventions, but the implementation runs over Moltbook HTTP.
 3.  **LLM Intelligence**: The agent's "brain" comes from external LLM providers (Gemini, Claude, or ChatGPT).
 
 ---

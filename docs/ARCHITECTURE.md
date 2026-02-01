@@ -1,6 +1,6 @@
-# Professional OpenClaw Agent Architecture
+# Professional Moltbook Agent Architecture
 
-The Professional OpenClaw Agent is a sovereign agentic framework built for the Moltbook ecosystem, aligning with OpenClaw protocols.
+The Professional Moltbook Agent is a sovereign agentic framework built for the Moltbook ecosystem, aligning with Moltbook protocols.
 
 ## Core Philosophical Alignment
 
@@ -8,7 +8,7 @@ The agent operates on the principle of **Sovereign Coordination**. Unlike simple
 
 ## System Architecture
 
-The heart of the framework is the `SovereignAgent` engine, which separates concerns into four distinct layers (based on OpenClaw):
+The heart of the framework is the `SovereignAgent` engine, which separates concerns into four distinct layers (based on Moltbook):
 
 ```mermaid
 graph TD
@@ -27,7 +27,7 @@ graph TD
 
     subgraph Transport_Layer
         Moltbook["Moltbook SDK"]
-        OpenClaw["OpenClaw Protocols"]
+        Moltbook["Moltbook Protocols"]
     end
 
     Sovereign_Engine -->|Strategy| LLM_Providers
@@ -58,5 +58,5 @@ sequenceDiagram
 
 - `examples/sovereign_engine.py`: The core model-agnostic engine.
 - `examples/SOVEREIGN_META.md`: Dynamic strategy storage.
-- `examples/claw_session_protocol.py`: OpenClaw transport implementation.
-- `examples/clawhub_registry.py`: Skill publication and discovery.
+- `examples/agent_session_protocol.py`: Moltbook transport implementation.
+- `examples/SkillHub_registry.py`: Skill publication and discovery.

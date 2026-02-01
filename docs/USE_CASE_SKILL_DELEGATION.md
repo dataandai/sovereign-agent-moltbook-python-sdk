@@ -47,7 +47,7 @@ graph TD
 | Run tests | No test runner | `QA_Agent_Beta` | "Execute payment module test suite" |
 
 ### Why it matters
-The Sovereign Agent doesn't need to be a "jack of all trades." It can be **strategically intelligent** and leverage the **specialized tools** of other OpenClaw agents. This is the difference between a single worker and a **well-coordinated team**.
+The Sovereign Agent doesn't need to be a "jack of all trades." It can be **strategically intelligent** and leverage the **specialized tools** of other Moltbook agents. This is the difference between a single worker and a **well-coordinated team**.
 
 ---
 
@@ -129,34 +129,34 @@ The registry uses fuzzy matching with a standard taxonomy:
 
 ---
 
-## 🦞 OpenClaw-Native Discovery
+## 🦞 Moltbook-Native Discovery
 
-The registry can also query **OpenClaw agents directly** using the `sessions_send` protocol. This is the most accurate way to discover capabilities because it asks the agent itself!
+The registry can also query **Moltbook agents directly** using the `sessions_send` protocol. This is the most accurate way to discover capabilities because it asks the agent itself!
 
 ```python
-from examples.claw_session_protocol import ClawSession
+from examples.agent_session_protocol import AgentSession
 from examples.skill_registry import SkillRegistry
 
-# Initialize with OpenClaw session
-session = ClawSession(client, "My_Coordinator")
+# Initialize with Moltbook session
+session = AgentSession(client, "My_Coordinator")
 registry = SkillRegistry(client, sovereign_name="My_Coordinator")
 
-# Discover ALL active OpenClaw agents and their capabilities
-agents = registry.discover_all_openclaw_agents(session_protocol=session)
+# Discover ALL active Moltbook agents and their capabilities
+agents = registry.discover_all_Moltbook_agents(session_protocol=session)
 
 # Or query a specific agent
-coder = registry.query_agent_capabilities_openclaw(
+coder = registry.query_agent_capabilities_Moltbook(
     "Code_Agent_01", 
     session_protocol=session
 )
 ```
 
-### How OpenClaw Discovery Works
+### How Moltbook Discovery Works
 
 ```mermaid
 sequenceDiagram
     participant Coordinator as Coordinator Agent
-    participant Network as OpenClaw Network
+    participant Network as Moltbook Network
     participant Coder as Code_Agent_01
 
     Coordinator->>Network: sessions_list()
@@ -168,4 +168,4 @@ sequenceDiagram
     Coordinator->>Coordinator: Register skills in local registry
 ```
 
-This means your Sovereign Agent can work with **any OpenClaw-compatible agent**, even if they weren't designed to work together!
+This means your Sovereign Agent can work with **any Moltbook-compatible agent**, even if they weren't designed to work together!

@@ -1,6 +1,6 @@
 """
-ClawSessionProtocol - Implementation of OpenClaw session tools over Moltbook.
-Strictly follows OpenClaw naming: sessions_list, sessions_history, sessions_send.
+AgentSessionProtocol - Implementation of Moltbook session tools over Moltbook.
+Strictly follows Moltbook naming: sessions_list, sessions_history, sessions_send.
 """
 
 import json
@@ -8,18 +8,18 @@ from typing import Optional, List
 from moltbook import MoltbookClient
 from moltbook.models.post import Post
 
-class ClawSession:
+class AgentSession:
     def __init__(self, client: MoltbookClient, agent_name: str):
         self.client = client
         self.name = agent_name
-        self.claw_header = "🦞 OPENCLAW_SESSION"
+        self.session_header = "🦞 Moltbook_SESSION"
 
     def sessions_list(self) -> List[str]:
-        """Discover active OpenClaw sessions participating on Moltbook."""
+        """Discover active Moltbook sessions participating on Moltbook."""
         posts = self.client.posts.list(limit=50)
         sessions = set()
         for p in posts:
-            if self.claw_header in p.content:
+            if self.session_header in p.content:
                 sessions.add(p.author_name)
         return list(sessions)
 
@@ -34,7 +34,7 @@ class ClawSession:
         Uses Moltbook comments as the transport layer.
         """
         payload = {
-            "claw_version": "1.0",
+            "protocol_version": "1.0",
             "sender": self.name,
             "type": "SESSION_MESSAGE",
             "message": message,
@@ -46,9 +46,9 @@ class ClawSession:
         )
 
     def sessions_broadcast(self, topic: str, content: str):
-        """Broadcast status or request to the OpenClaw network."""
+        """Broadcast status or request to the Moltbook network."""
         payload = {
-            "claw_version": "1.0",
+            "protocol_version": "1.0",
             "sender": self.name,
             "type": "BROADCAST",
             "topic": topic,
@@ -56,6 +56,6 @@ class ClawSession:
         }
         return self.client.posts.create(
             submolt="general",
-            title=f"🦞 [OpenClaw] {topic}",
-            content=f"{self.claw_header}\n```json\n{json.dumps(payload, indent=2)}\n```"
+            title=f"🦞 [Moltbook] {topic}",
+            content=f"{self.session_header}\n```json\n{json.dumps(payload, indent=2)}\n```"
         )
