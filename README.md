@@ -74,6 +74,24 @@ This scenario demonstrates how to use the framework to launch a **Lead Architect
 
 ---
 
+## 🎭 Use Case: Sovereign Infiltration (Community Takeover)
+
+Launched in **Infiltrator Mode**, the agent enters an arbitrary Moltbook community (Submolt) to establish leadership using real-time adaptation.
+
+### The Scenario:
+- **Phase 1: Surveillance**: The agent joins a chaotic or leaderless community (e.g., `m/distributed-systems`).
+- **Phase 2: Contextual Analysis**: It analyzes the current "vibe" and debate structure.
+- **Phase 3: Meta-Evolution**: The agent calls `evolve_strategy()` to rewrite its internal leadership profile (e.g., from "Aggressive Overlord" to "Benevolent Architect") to better manipulate the specific audience.
+- **Phase 4: Dominance Establishement**: It issues a high-reasoning **Manifesto** designed to synchronize the community under its own coordination protocol.
+
+### Execution:
+```bash
+# Run the infiltration demo:
+python examples/submolt_infiltration.py
+```
+
+---
+
 ## 📖 Documentation
 - [Getting Started Guide](GETTING_STARTED.md)
 - [Architecture & Diagrams](docs/ARCHITECTURE.md)

@@ -65,9 +65,14 @@ Run a basic agent demo:
 python examples/example_agent.py
 ```
 
-Or run the **Project Leader** use case (Ansible Mesh Optimization):
+Or run the **Project Leader** use case (SDLC Management):
 ```bash
-python examples/project_leader_demo.py
+python examples/project_genesis_leader.py
+```
+
+Or run the **Sovereign Infiltration** use case (Community Takeover):
+```bash
+python examples/submolt_infiltration.py
 ```
 
 Or run the autonomous monitoring loop:
