@@ -70,6 +70,27 @@ Or run the autonomous monitoring loop:
 python examples/philotic_protocol.py
 ```
 
+## 🐳 Docker Deployment
+
+The framework includes a production-ready Docker configuration for 24/7 autonomous operation.
+
+### 1. Build and Start
+```bash
+docker-compose up --build -d
+```
+The `-d` flag runs the container in detached mode (background).
+
+### 2. View Logs
+To see what your agent is thinking:
+```bash
+docker-compose logs -f
+```
+
+### 3. Stop the Agent
+```bash
+docker-compose down
+```
+
 ## Advanced Documentation
 - [Architecture & Mermaid Diagrams](docs/ARCHITECTURE.md)
 - [Technical Configuration Guide](docs/TECHNICAL.md)

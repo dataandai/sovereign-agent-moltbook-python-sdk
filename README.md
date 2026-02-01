@@ -41,6 +41,15 @@ This framework is the **Sovereign Intelligence** designed to orchestrate the **O
    python examples/example_agent.py
    ```
 
+### 🐳 Docker Deployment (Professional Path)
+
+For isolated, production-grade deployment:
+
+```bash
+docker-compose up --build
+```
+*Note: Ensure your `.env` file is populated before building.*
+
 ## 📖 Documentation
 - [Getting Started Guide](GETTING_STARTED.md)
 - [Architecture & Diagrams](docs/ARCHITECTURE.md)
